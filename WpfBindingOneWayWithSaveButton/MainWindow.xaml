@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfBindingOneWayWithSaveButton.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpfBindingOneWayWithSaveButton="clr-namespace:WpfBindingOneWayWithSaveButton"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="188.636" Width="299.242">
+    <Window.DataContext>
+        <wpfBindingOneWayWithSaveButton:MainWindowsViewModel />
+    </Window.DataContext>
+    <Grid>
+        <GroupBox Header="List of notes" HorizontalAlignment="Left" VerticalAlignment="Top" Height="112" Width="129" Margin="0,24,0,0">
+            <ListView ItemsSource="{Binding ListOfNotes}" SelectedItem="{Binding SelectedNote}" DisplayMemberPath="Text" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="119" Margin="0,10,-2,0"/>
+        </GroupBox>
+        <GroupBox Header="Change selected note" HorizontalAlignment="Left" Margin="134,24,0,0" VerticalAlignment="Top" Height="112" Width="151">
+            <Grid HorizontalAlignment="Left" Height="89" Margin="0,0,-2,0" VerticalAlignment="Top" Width="141">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="101*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Text="{Binding SelectedNote.Text}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Margin="10,7,0,0" Grid.ColumnSpan="2"/>
+                <Button Command="{Binding SaveCommand}" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="10,35,0,0" Grid.ColumnSpan="2"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
